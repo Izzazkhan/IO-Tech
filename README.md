@@ -1,3 +1,41 @@
+# React Todo App
+
+## Overview
+
+This is a React-based web application that does [brief description of what the app does]. It is built with [list key technologies used, e.g., React, Typescript, etc.] and styled with Tailwind.
+
+## Live Demo
+
+You can access the live version of the app at:  
+[Live URL](https://io-tech-task-two.vercel.app/)
+
+## Installation and Running the Project Locally
+
+To run the project locally, follow these steps:
+
+1. **Clone the repository**:
+
+```bash
+git clone https://github.com/Izzazkhan/IO-Tech.git
+```
+
+2. **Install dependencies**:
+
+```bash
+npm install
+```
+
+3. **Run the development server**:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
