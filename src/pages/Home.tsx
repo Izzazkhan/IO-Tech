@@ -25,14 +25,13 @@ function HomePage() {
           data.sort((a: any, b: any) => a.id - b.id)
         } else {
           data.sort((a: any, b: any) => b.id - a.id)
-  
         }
         setItems(data)
       } else {
         console.log('Error')
       }
     }
-      fetchCall()
+    fetchCall()
   }, [sortOrder])
 
   const handleAddOrUpdate = async (data: Omit<Item, "id">) => {
@@ -47,7 +46,6 @@ function HomePage() {
     } else {
       const newItem = await createItem(data)
       setItems((prev) => [newItem, ...prev])
-
     }
   }
 
@@ -55,19 +53,17 @@ function HomePage() {
     const res = await deleteItem(id)
     if(res) {
       setEditingItem(null)
+      return (
+        setItems((prev) => prev.filter((item) => item.id !== id))
+      )
     }
-    return (
-      setItems((prev) => prev.filter((item) => item.id !== id))
-    )
   }
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value
     setSearchTerm(searchTerm)
-    const filteredItems = items.filter((item) =>
-      item.title.toLowerCase().includes(searchTerm.toLowerCase())
-      )
-      setFilteredData(filteredItems)
+    const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchTerm.toLowerCase()))
+    setFilteredData(filteredItems)
   }
 
   return (
