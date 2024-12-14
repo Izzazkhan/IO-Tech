@@ -2,7 +2,7 @@
 
 ## Overview
 
-This is a React-based web application that does [brief description of what the app does]. It is built with [list key technologies used, e.g., React, Typescript, etc.] and styled with Tailwind.
+This is a React-based web application. It is built with list of technologies used, e.g., React, Typescript, etc. and styled with Tailwind.
 
 ## Live Demo
 
