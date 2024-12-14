@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { fetchItems, createItem, updateItem, deleteItem } from "../services/api"
 import { Item } from "../types/item"
 import ItemForm from "../components/ItemForm"
@@ -11,7 +11,8 @@ function HomePage() {
   const [searchTerm, setSearchTerm] = useState<string>('')
   const [filteredData, setFilteredData] = useState<Item[]>([])
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc')
-  
+  const inputRef = useRef<HTMLInputElement | null>(null)
+
   useEffect(() => {
     async function fetchCall()  {
       const res = await fetchItems()
@@ -21,11 +22,8 @@ function HomePage() {
           title: item.title,
           body: item.body
         }))
-        if(sortOrder === 'asc') {
-          data.sort((a: any, b: any) => a.id - b.id)
-        } else {
-          data.sort((a: any, b: any) => b.id - a.id)
-        }
+        if(sortOrder === 'asc') data.sort((a: any, b: any) => a.id - b.id)
+        else data.sort((a: any, b: any) => b.id - a.id)
         setItems(data)
       } else {
         console.log('Error')
@@ -46,6 +44,7 @@ function HomePage() {
     } else {
       const newItem = await createItem(data)
       setItems((prev) => [newItem, ...prev])
+      setEditingItem(null)
     }
   }
 
@@ -70,11 +69,12 @@ function HomePage() {
     <div className="mt-12 bg-gray-100 min-h-screen py-12 px-6">
       <br /><br />
       <ItemForm
+        inputRef={inputRef}
         onSubmit={handleAddOrUpdate}
         initialData={editingItem ? { title: editingItem.title, body: editingItem.body } : undefined}
       />
       <SortFilterBar searchTerm={searchTerm} handleSearch={handleSearch} sortOrder={sortOrder} setSortOrder={setSortOrder} />
-      <ItemList items={searchTerm != '' ? filteredData : items} onEdit={setEditingItem} onDelete={handleDelete} />
+      <ItemList inputRef={inputRef} items={searchTerm != '' ? filteredData : items} onEdit={setEditingItem} onDelete={handleDelete} />
     </div>
   )
 }

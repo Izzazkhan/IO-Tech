@@ -4,9 +4,10 @@ import { Item } from "../types/item"
 interface ItemFormProps {
   onSubmit: (data: Omit<Item, "id">) => void
   initialData?: Omit<Item, "id">
+  inputRef: React.RefObject<HTMLInputElement>
 }
 
-const ItemForm: React.FC<ItemFormProps> = ({ onSubmit, initialData }) => {
+const ItemForm: React.FC<ItemFormProps> = ({ onSubmit, initialData, inputRef }) => {
   const [formData, setFormData] = useState({title: '', body: ''})
   useEffect(() => {
     if (initialData) {
@@ -28,7 +29,7 @@ const ItemForm: React.FC<ItemFormProps> = ({ onSubmit, initialData }) => {
             Title
           </label>
           <input className="appearance-none block w-full bg-gray-50 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" 
-          required value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} id="grid-first-name" type="text" placeholder="Write title here" />
+          ref={inputRef} required value={formData.title} onChange={(e) => setFormData({...formData, title: e.target.value})} id="grid-first-name" type="text" placeholder="Write title here" />
         </div>
         <div className="w-full md:w-1/2 px-3">
           <label className="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">

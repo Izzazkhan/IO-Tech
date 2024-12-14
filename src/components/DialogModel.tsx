@@ -7,8 +7,7 @@ interface Props {
 }
 
 const MyModal: React.FC<Props> = ({ closeModal, isOpen}) => {
-
-  return (
+    return (
         <Transition appear show={isOpen} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={closeModal}>
             <Transition.Child
@@ -22,7 +21,6 @@ const MyModal: React.FC<Props> = ({ closeModal, isOpen}) => {
             >
                 <div className="fixed inset-0 bg-black/25" />
             </Transition.Child>
-
             <div className="fixed inset-0 overflow-y-auto">
                 <div className="flex min-h-full items-center justify-center p-4 text-center">
                 <Transition.Child
@@ -62,7 +60,7 @@ const MyModal: React.FC<Props> = ({ closeModal, isOpen}) => {
             </div>
             </Dialog>
         </Transition>
-  )
+    )
 }
 
 export default MyModal

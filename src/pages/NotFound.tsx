@@ -1,3 +1,3 @@
 export default function NotFound() {
-    return <div>No Meal found for that category.</div>;
+    return <div>No Item found</div>
   }
