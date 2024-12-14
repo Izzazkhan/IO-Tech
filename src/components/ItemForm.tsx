@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { Item } from "../types/item";
+import React, { useState, useEffect } from "react"
+import { Item } from "../types/item"
 
 interface ItemFormProps {
   onSubmit: (data: Omit<Item, "id">) => void

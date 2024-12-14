@@ -67,7 +67,7 @@ function HomePage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto mt-12">
+    <div className="mt-12 bg-gray-100 min-h-screen py-12 px-6">
       <br /><br />
       <ItemForm
         onSubmit={handleAddOrUpdate}
